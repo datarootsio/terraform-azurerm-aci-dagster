@@ -1,1 +1,3 @@
-Test 2
+<!--- BEGIN_TF_DOCS --->
+
+<!--- END_TF_DOCS --->

@@ -5,7 +5,7 @@ from dagster import pipeline, repository, solid, ScheduleDefinition
 
 
 @solid
-def load_sander(_):
+def load_cereal(_):
     dataset_path = os.path.join(os.path.dirname(__file__), "cereal.csv")
     with open(dataset_path, "r") as fd:
         cereals = [row for row in csv.DictReader(fd)]
@@ -38,7 +38,7 @@ def display_results(context, most_calories, most_protein):
 
 @pipeline
 def complex_pipeline():
-    cereals = load_sander()
+    cereals = load_cereal()
     display_results(
         most_calories=sort_by_calories(cereals),
         most_protein=sort_by_protein(cereals),

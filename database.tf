@@ -1,6 +1,6 @@
 resource "azurerm_postgresql_server" "dagster-postgresql" {
   location                      = var.location
-  name                          = "dagster-sqlserver"
+  name                          = "${var.resource_prefix}-sqlserver-dagster-${var.resource_suffix}"
   resource_group_name           = azurerm_resource_group.dagster_rg.name
   version                       = var.server_version
   sku_name                      = var.sku_name
@@ -13,7 +13,7 @@ resource "azurerm_postgresql_server" "dagster-postgresql" {
 
 resource "azurerm_postgresql_firewall_rule" "dagster-firewall" {
   end_ip_address      = "0.0.0.0"
-  name                = "dagster-firewall"
+  name                = "${var.resource_prefix}-firewall-dagster-${var.resource_suffix}"
   resource_group_name = azurerm_resource_group.dagster_rg.name
   server_name         = azurerm_postgresql_server.dagster-postgresql.name
   start_ip_address    = "0.0.0.0"
@@ -22,7 +22,7 @@ resource "azurerm_postgresql_firewall_rule" "dagster-firewall" {
 resource "azurerm_postgresql_database" "dagster-database" {
   charset             = var.charset
   collation           = var.db_collation
-  name                = "dagster-database"
+  name                = "${var.resource_prefix}-db-dagster-${var.resource_suffix}"
   resource_group_name = azurerm_resource_group.dagster_rg.name
   server_name         = azurerm_postgresql_server.dagster-postgresql.name
 }

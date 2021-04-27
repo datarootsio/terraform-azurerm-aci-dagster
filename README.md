@@ -71,8 +71,8 @@ load_from:
 | dagster\_container\_home | n/a | `string` | `"/opt"` | no |
 | dagster\_file | The dagster instance configuration file | `string` | `"dagster.yaml"` | no |
 | db\_collation | Collation type of the SQL database | `string` | `"English_United States.1252"` | no |
-| db\_password | The password associated with the server login | `string` | `"Test123456"` | no |
-| db\_username | The administrator login name for the SQL server | `string` | `"psuser"` | no |
+| db\_password | The password associated with the server login | `string` | `""` | no |
+| db\_username | The administrator login name for the SQL server | `string` | `""` | no |
 | location | The location of the resource group that will be created in which all services are created | `string` | `"West Europe"` | no |
 | resource\_prefix | Prefix that will be given to every resource name | `string` | `"ps"` | no |
 | resource\_suffix | Suffix that will be given to every resource name | `string` | `"sp"` | no |

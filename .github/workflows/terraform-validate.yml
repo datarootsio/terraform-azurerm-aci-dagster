@@ -9,7 +9,7 @@ on:
       - master
 jobs:
   terraform:
-    name: "Terraform"
+    name: "Terraform validation and formatting"
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"

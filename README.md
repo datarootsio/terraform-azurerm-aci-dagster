@@ -52,38 +52,39 @@ load_from:
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.13 |
-| aws | ~> 3.12.0 |
+| azurerm | >=2.56.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.12.0 |
+| azurerm | >=2.56.0 |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| aws\_availability\_zone | The availability zone of the resource. | `string` | `"eu-west-1a"` | no |
-| aws\_region | The region of the aws account | `string` | `"eu-west-1"` | no |
-| dagster-container-home | n/a | `string` | `"/opt"` | no |
-| dagster\_config\_bucket | Dagster bucket containing the config files. | `string` | `"dagster-bucket"` | no |
-| dagster\_file | The config file needed to use database and daemon with dagit. | `string` | `"dagster.yaml"` | no |
-| ecs\_cpu | The amount of cpu to give to the ECS instance. | `number` | `1024` | no |
-| ecs\_memory | The amount of ecs memory to give to the ECS instance. | `number` | `2048` | no |
-| log\_retention | The number of days that the logs shoud live. | `number` | `7` | no |
-| private\_subnet | The private subnets where the RDS and ECS reside. | `list(string)` | `[]` | no |
-| public\_subnet | The public subnet where the load balancer should reside. Moreover, the ecs and rds will use these if no private subnets are defined. At least two should be provided. | `list(string)` | `[]` | no |
-| rds\_deletion\_protection | n/a | `bool` | `false` | no |
-| rds\_instance\_class | The type of instance class for the RDS. | `string` | `"db.t2.micro"` | no |
-| rds\_password | The password to access the RDS instance. | `string` | `""` | no |
-| rds\_username | The username to access the RDS instance. | `string` | `""` | no |
-| resource\_prefix | The prefix of the resource to be created | `string` | `"ps"` | no |
-| resource\_suffix | The suffix of the resource to be created | `string` | `"sp"` | no |
-| tags | Tags to add to the created resources. | `map(string)` | <pre>{<br>  "Name": "Terraform-aws-dagster"<br>}</pre> | no |
-| vpc | The id of the virtual private cloud. | `string` | `""` | no |
-| workspace\_file | The config file needed to run dagit. | `string` | `"workspace.yaml"` | no |
+| azurerm\_version | The desired azurerm version to create the module with | `string` | `"=2.56.0"` | no |
+| charset | Specifies the Charset for the PostgreSQL Database | `string` | `"UTF8"` | no |
+| container\_start\_limit | Limit (in seconds) on the start up time of the containers | `number` | `1800` | no |
+| dagit\_port\_number | The public port for the running dagit container | `number` | `8080` | no |
+| dagster\_container\_home | n/a | `string` | `"/opt"` | no |
+| dagster\_file | The dagster instance configuration file | `string` | `"dagster.yaml"` | no |
+| db\_collation | Collation type of the SQL database | `string` | `"English_United States.1252"` | no |
+| db\_password | The password associated with the server login | `string` | `"Test123456"` | no |
+| db\_username | The administrator login name for the SQL server | `string` | `"psuser"` | no |
+| location | The location of the resource group that will be created in which all services are created | `string` | `"West Europe"` | no |
+| resource\_prefix | Prefix that will be given to every resource name | `string` | `"ps"` | no |
+| resource\_suffix | Suffix that will be given to every resource name | `string` | `"sp"` | no |
+| server\_port | n/a | `number` | `"5432"` | no |
+| server\_version | The version of the created SQL server | `string` | `"11"` | no |
+| service\_plan\_size | n/a | `string` | `"S1"` | no |
+| service\_plan\_tier | n/a | `string` | `"Standard"` | no |
+| sku\_name | Billing information related properties of a server | `string` | `"GP_Gen5_2"` | no |
+| storage\_account\_replication | The replication strategy for the created storage account | `string` | `"LRS"` | no |
+| storage\_account\_tier | The performance tier for the created storage account | `string` | `"Standard"` | no |
+| tags | Custom tag that will be added to every resource for easier management | `map(string)` | <pre>{<br>  "Name": "terraform-azure-dagster"<br>}</pre> | no |
+| workspace\_file | The workspace configuration file | `string` | `"workspace.yaml"` | no |
 
 ## Outputs
 

@@ -7,19 +7,21 @@ This is a module for Terraform that deploys Dagster in Azure.
 
 ## Setup
 
+The dagster terraform module will create the following services:
 
 - Azure Resource Group
 - Azure Storage Account
 - Azure File Share containing dagster configuration files
 - Azure PostgreSQL server/database
 - An Azure App Service:
-    -   Dagit UI and Dagster Daemon containers running
+    -   running the Dagit UI and Dagster Daemon containers
 
 Average cost of the minimal setup with Azure database: ~50$/month
 
 ## Intend
 
-The Dagster setup provided with this module is intended to be used to manage your runs/schedules/etc... 
+The Dagster setup provided with this module is intended to be used as an orchestration tool. The setup
+will allow you to manage your data pipelines, runs, schedules etc... 
 
 ## Usage
 
@@ -27,14 +29,13 @@ The Dagster setup provided with this module is intended to be used to manage you
 module "dagster" {
     source = "datarootsio/aci-dagster/azure"
 
-
     resource_prefix = "my-awesome-company"
     resource_suffix = "env"
     db_password = "super-secret-pass"
 }
 ```
 
-## Adding new pipeline
+## Adding new pipelines to Dagster
 To add new pipelines to Dagster:
 - Add the new pipeline to the 'workspace.yaml' configuration file.
 ```hcl

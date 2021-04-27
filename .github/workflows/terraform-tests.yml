@@ -36,8 +36,8 @@ jobs:
     env:
       tests_timeout: "2h"
       golangci_lint_version: "v1.32"
-      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID_2 }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_2 }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
     name: "Tests"

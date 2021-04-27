@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - mvp
+      - documentation
 jobs:
   docs:
     name: "Docs"

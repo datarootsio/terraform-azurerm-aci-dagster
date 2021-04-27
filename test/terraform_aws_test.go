@@ -1,12 +1,9 @@
 package test
 
 import (
-	//"os"
 	"strings"
 	"testing"
 	"time"
-
-	//"github.com/gruntwork-io/terratest/modules/azure"
 	"github.com/gruntwork-io/terratest/modules/logger"
 	"github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"

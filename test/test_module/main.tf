@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 module "aci-dagster" {
-  source = "../.."
+  source          = "../.."
   resource_prefix = var.resource_prefix
   resource_suffix = var.resource_suffix
 }

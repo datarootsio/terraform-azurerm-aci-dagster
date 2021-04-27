@@ -19,7 +19,7 @@ jobs:
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
     name: "Tests"
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' && github.base_ref == 'documentation' && (github.actor == 'PaoloDataroots' || github.actor == 'Sandervg4')}}
+    #if: ${{ github.event_name == 'pull_request' && github.base_ref == 'documentation' && (github.actor == 'PaoloDataroots' || github.actor == 'Sandervg4')}}
     steps:
       - name: "Checkout"
         uses: actions/checkout@master

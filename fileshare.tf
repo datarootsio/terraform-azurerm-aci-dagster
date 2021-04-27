@@ -21,17 +21,17 @@ resource "azurerm_storage_share" "dagster-fileshare" {
 resource "azurerm_storage_share_file" "workspace_file" {
   name             = "workspace.yaml"
   storage_share_id = azurerm_storage_share.dagster-fileshare.id
-  source           = "files/workspace.yaml"
+  source           = "dagster_init_files/workspace.yaml"
 }
 
 resource "azurerm_storage_share_file" "dagster_file" {
   name             = "dagster.yaml"
   storage_share_id = azurerm_storage_share.dagster-fileshare.id
-  source           = "files/dagster.yaml"
+  source           = "dagster_init_files/dagster.yaml"
 }
 
 resource "azurerm_storage_share_file" "dummy_pipeline" {
   name             = "dummy_pipeline.py"
   storage_share_id = azurerm_storage_share.dagster-fileshare.id
-  source           = "files/dummy_pipeline.py"
+  source           = "dagster_init_files/dummy_pipeline.py"
 }

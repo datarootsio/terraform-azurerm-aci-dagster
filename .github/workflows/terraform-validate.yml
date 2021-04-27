@@ -24,11 +24,11 @@ jobs:
 
       - name: Terraform Format (module)
         run: terraform fmt -check
-        working-directory: ./test/module_test
+        working-directory: ./test/test_module
 
       - name: Terraform Format (test)
         run: terraform fmt -check
 
       - name: Terraform Validate
         run: terraform validate
-        working-directory: ./test/module_test
+        working-directory: ./test/test_module

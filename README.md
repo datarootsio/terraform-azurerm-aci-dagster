@@ -55,11 +55,13 @@ load_from:
 |------|---------|
 | azurerm | >=2.56.0 |
 
+
 ## Providers
 
 | Name | Version |
 |------|---------|
 | azurerm | >=2.56.0 |
+
 
 ## Inputs
 
@@ -74,6 +76,7 @@ load_from:
 | db\_collation | Collation type of the SQL database | `string` | `"English_United States.1252"` | no |
 | db\_password | The password associated with the server login | `string` | `""` | no |
 | db\_username | The administrator login name for the SQL server | `string` | `""` | no |
+
 | location | The location of the resource group that will be created in which all services are created | `string` | `"West Europe"` | no |
 | resource\_prefix | Prefix that will be given to every resource name | `string` | `"ps"` | no |
 | resource\_suffix | Suffix that will be given to every resource name | `string` | `"sp"` | no |
@@ -119,5 +122,6 @@ Make sure to install [Terraform](https://learn.hashicorp.com/terraform/getting-s
 Make sure you branch from the 'open-pr-here' branch, and submit a PR back to the 'open-pr-here' branch.
 
 ## License
+
 
 MIT license. Please see [LICENSE](LICENSE.md) for details.

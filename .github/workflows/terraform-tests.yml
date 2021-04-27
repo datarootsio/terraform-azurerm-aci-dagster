@@ -1,0 +1,33 @@
+name: "tests"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  test:
+    env:
+      tests_timeout: "2h"
+      golangci_lint_version: "v1.32"
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID_2 }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET_2 }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+    name: "Tests"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - name: "go vet"
+        run: go vet ./...
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          # Optional: golangci-lint command line arguments.
+          args: --timeout=3m0s
+          version: ${{ env.golangci_lint_version }}
+
+      - name: "go test"
+        run: |
+          go test -v  -timeout ${{ env.tests_timeout }} ./...

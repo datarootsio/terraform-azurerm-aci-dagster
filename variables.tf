@@ -53,13 +53,13 @@ variable "server_version" {
 
 variable "db_username" {
   type        = string
-  default     = "psuser"
+  default     = ""
   description = "The administrator login name for the SQL server"
 }
 
 variable "db_password" {
   type        = string
-  default     = "Test123456"
+  default     = ""
   description = "The password associated with the server login"
   sensitive   = true
 }

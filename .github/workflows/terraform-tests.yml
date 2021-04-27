@@ -1,0 +1,62 @@
+name: "tests"
+on:
+  push:
+    branches:
+      - main
+      - documentation
+  pull_request:
+    branches:
+      - main
+      - documentation
+jobs:
+  validate:
+    name: "Validate"
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 0.13.4
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Format
+        run: terraform fmt -check
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: tflint
+        run: docker run --rm -v $(pwd):/data -t wata727/tflint
+  test:
+    env:
+      tests_timeout: "2h"
+      golangci_lint_version: "v1.32"
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+    name: "Tests"
+    runs-on: ubuntu-latest
+    #if: ${{ github.event_name == 'pull_request' && github.base_ref == 'dagster_daemon' && (github.actor == 'PaoloDataroots' || github.actor == 'Sandervg4')}}
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - name: "go vet"
+        run: go vet ./...
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          # Optional: golangci-lint command line arguments.
+          args: --timeout=3m0s
+          version: ${{ env.golangci_lint_version }}
+
+      - name: "go test"
+        run: |
+          go test -v  -timeout ${{ env.tests_timeout }} ./...

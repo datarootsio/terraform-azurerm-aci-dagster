@@ -1,14 +1,19 @@
 ## General variables
+variable "azurerm_version" {
+  type        = string
+  default     = "=2.56.0"
+  description = "The desired azurerm version to create the module with"
+}
 
 variable "resource_prefix" {
-  type = string
-  default = "ps"
+  type        = string
+  default     = "ps"
   description = "Prefix that will be given to every resource name"
 }
 
 variable "resource_suffix" {
-  type = string
-  default = "sp"
+  type        = string
+  default     = "sp"
   description = "Suffix that will be given to every resource name"
 }
 
@@ -27,14 +32,14 @@ variable "location" {
 ## Fileshare variables
 
 variable "storage_account_tier" {
-  type = string
-  default = "Standard"
+  type        = string
+  default     = "Standard"
   description = "The performance tier for the created storage account"
 }
 
 variable "storage_account_replication" {
-  type = string
-  default = "LRS"
+  type        = string
+  default     = "LRS"
   description = "The replication strategy for the created storage account"
 }
 
@@ -48,14 +53,15 @@ variable "server_version" {
 
 variable "db_username" {
   type        = string
-  default     = "psuser"
+  default     = ""
   description = "The administrator login name for the SQL server"
 }
 
 variable "db_password" {
   type        = string
-  default     = "Test123456"
+  default     = ""
   description = "The password associated with the server login"
+  sensitive   = true
 }
 
 variable "sku_name" {
@@ -88,8 +94,8 @@ variable "service_plan_tier" {
 }
 
 variable "container_start_limit" {
-  type = number
-  default = 1800
+  type        = number
+  default     = 1800
   description = "Limit (in seconds) on the start up time of the containers"
 }
 

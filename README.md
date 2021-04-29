@@ -89,7 +89,9 @@ load_from:
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| dagster\_appservice\_url | The url of the running app service. This url can be used to access the Dagit webserver |
 
 <!--- END_TF_DOCS --->
 

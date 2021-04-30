@@ -48,6 +48,11 @@ load_from:
 - Update the created Azure Fileshare by adding the new pipeline and the updated 'workspace.yaml' file. This way Dagit
   and the Dagster Daemon have access to the new pipeline, which will show up in the Dagit UI.
 
+## Security
+This module supports HTTPS however RBAC is not supported (yet?) by Dagster. Therefore,
+this module results in Dagit being publicly available. It is important to note that the 
+user should implement and manage authentication themselves, for example by implementing SSO.
+
 <!--- BEGIN_TF_DOCS --->
 ## Requirements
 
